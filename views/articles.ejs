@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<%- include('header')%>
+
+    <body>
+        <div class="container-fluid justify-content-center">
+            <h1 class="display-4 text-center" href="#">Bulletin Board</h1>
+        </div>
+        <form action="/createArticle" method="post">
+            <button name="updateId" class=" btn btn-lg btn-success" title="Create Article"
+                onCHange="this.form.submit()">Create Article</button>
+        </form>
+
+        <div class="container">
+            <% Article.forEach(function(e){ %>
+                <div>
+                    <p class="display-4">Title: <%= e.title %>
+                    </p>
+                    <p class="lead">Content: <%= e.content %>
+                    </p>
+                    <p class="lead">Date created: <%= e.dateCreated %>
+                    </p>
+
+                    <form action="/update" method="post">
+                        <button name="updateId" class=" btn btn-primary-outline" title="Edit Article"
+                            value="<%=e._id %>" onCHange="this.form.submit()"><i class="fas fa-edit fa-2x"></i></button>
+                    </form>
+
+                    <form action="/delete" method="post">
+                        <button name="deleteId" class=" btn btn-primary-outline" title="Delete Article"
+                            value="<%=e._id %>" onCHange="this.form.submit()"><i
+                                class="fas fa-trash-alt fa-2x"></i></button>
+                    </form>
+                </div>
+
+                <% }) %>
+        </div>
+        </div>
+    </body>
+
+    <!-- <p id="pTag">text</p>
+<script>
+  document.querySelector('#pTag').innerHTML ="Dilson";
+</script> -->
+
+    <%- include('footer')%>
